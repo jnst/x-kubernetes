@@ -1,0 +1,8 @@
+.kube
+.terraform/
+.terraform.lock.hcl
+
+*.tfstate
+*.tfstate.*
+
+gcp.json
