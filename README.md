@@ -2,6 +2,10 @@
 
 ## Prepare infrastructure with Terraform
 
-### GCP
+### Terraform
 
-We will use Terraform Cloud to create a minimal Kubernetes cluster in GCP.
+We will use Terraform Cloud to create a minimal Kubernetes cluster in GCP. Set the following variables in Terrarform Cloud.
+
+| Key | Value |
+| ---- | ---- |
+| PROJECT_ID | \*\*\*\*\*\*\*\*-\*\*\*\*\*-\*\*\*\*\*\* |
