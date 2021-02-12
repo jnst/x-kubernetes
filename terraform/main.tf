@@ -77,7 +77,8 @@ resource "google_compute_instance" "master_node" {
     }
   }
   network_interface {
-    network = google_compute_network.network.id
+    network    = google_compute_network.network.id
+    subnetwork = google_compute_subnetwork.subnetwork.id
   }
 }
 
@@ -98,6 +99,7 @@ resource "google_compute_instance" "worker_node" {
     }
   }
   network_interface {
-    network = google_compute_network.network.id
+    network    = google_compute_network.network.id
+    subnetwork = google_compute_subnetwork.subnetwork.id
   }
 }
