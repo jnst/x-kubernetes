@@ -73,12 +73,14 @@ resource "google_compute_instance" "master_node" {
   }
   boot_disk {
     initialize_params {
+      size  = 30
       image = "ubuntu-os-cloud/ubuntu-2004-lts"
     }
   }
   network_interface {
     network    = google_compute_network.network.id
     subnetwork = google_compute_subnetwork.subnetwork.id
+    network_ip = "10.240.0.1${index(keys(local.master_nodes), each.key)}"
   }
 }
 
@@ -95,11 +97,16 @@ resource "google_compute_instance" "worker_node" {
   }
   boot_disk {
     initialize_params {
+      size  = 30
       image = "ubuntu-os-cloud/ubuntu-2004-lts"
     }
   }
   network_interface {
     network    = google_compute_network.network.id
     subnetwork = google_compute_subnetwork.subnetwork.id
+    network_ip = "10.240.0.2${index(keys(local.worker_nodes), each.key)}"
+  }
+  metadata = {
+    pod-cidr = "10.200.${index(keys(local.worker_nodes), each.key)}.0/24"
   }
 }
